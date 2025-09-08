@@ -65,7 +65,7 @@ Siga estes passos para configurar e rodar o projeto localmente e replicar a aná
 2. **Baixe o Dataset**:
     - Acesse a fonte original [Contratos públicos - dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/comprasgovbr-contratos) e baixe o arquivo CSV **Contratos do ano corrente**. Salve-o na pasta **dataset/raw/** do projeto.
 3.  **Configure o Ambiente Docker**:
-    Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máquina.
+    - Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máquina.
     - Edite o arquivo **.env** para definir suas credenciais de banco de dados (ex.: POSTGRES_USER, POSTGRES_PASSWORD).
     - Iniciei os containers do PostgreSQL e pgAdmin:
     ```bash
