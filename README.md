@@ -63,7 +63,7 @@ Siga estes passos para configurar e rodar o projeto localmente e replicar a aná
     cd nome-do-repositorio
     ```
 2. **Baixe o Dataset**:
-    Acesse a fonte original [Contratos públicos - dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/comprasgovbr-contratos) e baixe o arquivo CSV **Contratos do ano corrente**. Salve-o na pasta **dataset/raw/** do projeto.
+    - Acesse a fonte original [Contratos públicos - dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/comprasgovbr-contratos) e baixe o arquivo CSV **Contratos do ano corrente**. Salve-o na pasta **dataset/raw/** do projeto.
 3.  **Configure o Ambiente Docker**:
     Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máquina.
     - Edite o arquivo **.env** para definir suas credenciais de banco de dados (ex.: POSTGRES_USER, POSTGRES_PASSWORD).
@@ -75,7 +75,7 @@ Siga estes passos para configurar e rodar o projeto localmente e replicar a aná
     - A flag **-d** executa os containers em segundo plano (**detached note**).
     
 4.  **Carregue os Dados na Camada Bronze**:
-    Conecte-se ao PostgreSQL via pgAdmin (geralmente **http://localhost:8080** ou uma porta similar, usando as credenciais definidas no **.env**).
+    - Conecte-se ao PostgreSQL via pgAdmin (geralmente **http://localhost:8080** ou uma porta similar, usando as credenciais definidas no **.env**).
     - Execute os scripts SQL presentes na pasta **scripts/bronze/** que contêm os comandos (**COPY** ou **INSERT**) para importar o CSV da pasta **datasets/raw/** para uma tabela de staging ou diretamente na camada Bronze.
 5.  **Execute as Transformações e Análises**:
     - Execute os scripts SQL da pasta **scripts/silver/** para limpar e transformar os dados, gerando as tabelas ou visões da camada Silver.
