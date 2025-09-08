@@ -1,0 +1,11 @@
+# Dados do Postgres
+pgdata/
+
+# Database (raw dataset)
+datasets/raw/
+
+# Scripts de configuração local sensível
+.env
+
+# Logs do Docker
+*.log
