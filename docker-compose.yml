@@ -1,28 +1,45 @@
 services:
-  postgres:
-    image: postgres:15
+  database:
+    image: postgres:15.5
     container_name: contratos_db
     restart: always
     environment:
-      POSTGRES_USER: $(POSTGRES_USER)
-      POSTGRES_PASSWORD: $(POSTGRES_PASSWORD)
-      POSTGRES_DB: $(POSTGRES_DB)
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
-      - ./datasets/raw:/data
-      - ./initdb:/docker-entrypoint-initdb.d
+      - contratos_data:/var/lib/postgresql/data
+      - ./datasets/raw:/datasets/raw
+      - ./scripts:/scripts
     ports:
       - "127.0.0.1:5432:5432"
-      
+    networks:
+      - contratos_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
     restart: always
-    enviroment:
-      PGADMIN_DEFAULT_EMAIL: $(PGADMIN_DEFAULT_EMAIL)
-      PGADMIN_DEFAULT_PASSWORD: $(PGADMIN_DEFAULT_PASSWORD)
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "127.0.0.1:8080:80"
-    depends on:
-      - postgres
+    networks:
+      - contratos_network
+    depends_on:
+      database:
+        condition: service_healthy
       
+volumes:
+  contratos_data:
+
+networks:
+  contratos_network:
+    driver: bridge
