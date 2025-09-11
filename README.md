@@ -18,9 +18,10 @@ O foco principal é explorar, transformar e analisar contratos públicos federai
 ## Dataset
 
 - **Fonte**: [Contratos públicos - dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/comprasgovbr-contratos).
-- **Nome do Arquivo**: Contratos do ano corrente
+- **Nome do arquivo**: Contratos do ano corrente
 - **Tamanho**: 172.8MB
-- **Data de download**: 2025-08-08
+- **Data de atualização do arquivo**: 2025-08-06 
+- **Data de download**: 2025-09-11
 
 > O dataset contém informações detalhadas sobre contratos firmados por órgãos públicos federais brasileiros, permitindo a análise de valores, órgãos contratantes, tipos de contrato, prazos e outros indicadores estratégicos.
 
@@ -36,8 +37,6 @@ contratos-publicos-sql/
 ├─ README.md              # Documentação do projeto
 ├─ datasets/
 │  └─ raw/                # Arquivo CSV original baixado da fonte
-├─ initdb/                # Scripts de inicialização do banco de dados
-├─ pgdata/                # Diretório para o armazenamento persistente dos dados do PostgreSQL
 ├─ scripts/
 │  ├─ bronze/             # Scripts SQL para a camada Bronze (importação/carga inicial)
 │  ├─ silver/             # Scripts SQL para a camada Silver (limpeza e transformação)
@@ -66,7 +65,7 @@ Siga estes passos para configurar e rodar o projeto localmente e replicar a aná
     - Acesse a fonte original [Contratos públicos - dados.gov.br](https://dados.gov.br/dados/conjuntos-dados/comprasgovbr-contratos) e baixe o arquivo CSV **Contratos do ano corrente**. Salve-o na pasta **dataset/raw/** do projeto.
 3.  **Configure o Ambiente Docker**:
     - Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máquina.
-    - Edite o arquivo **.env** para definir suas credenciais de banco de dados (ex.: POSTGRES_USER, POSTGRES_PASSWORD).
+    - Crie o arquivo **.env** para definir suas credenciais de banco de dados (ex.: POSTGRES_USER, POSTGRES_PASSWORD).
     - Iniciei os containers do PostgreSQL e pgAdmin:
     ```bash
     docker-compose up -d
