@@ -134,7 +134,7 @@ FROM '/datasets/raw/comprasnet-contratos-anual-contratos-latest.csv'
 WITH ( 
     FORMAT CSV, 
     HEADER TRUE, 
-    DELIMITER ';', 
+    DELIMITER ',', 
     ENCODING 'LATIN1' 
 );
 
