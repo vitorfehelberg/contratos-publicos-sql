@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS bronze CASCADE;
 
 CREATE SCHEMA IF NOT EXISTS bronze;
 
-CREATE TABLE IF NOT EXISTS bronze.contracts ( 
+CREATE TABLE IF NOT EXISTS bronze.contratos ( 
     id VARCHAR,
     receita_despesa VARCHAR, 
     numero VARCHAR, 
@@ -42,55 +42,55 @@ CREATE TABLE IF NOT EXISTS bronze.contracts (
     valor_acumulado VARCHAR, 
     situacao VARCHAR, 
     raw_line VARCHAR, 
-    ingestao_data TIMESTAMP DEFAULT NOW(), 
+    ingestao_data TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'UTC'), 
     ingestao_origem VARCHAR DEFAULT 'comprasnet-contratos-anual-contratos-latest.csv', 
-    ingestao_usuario VARCHAR DEFAULT CURRENT_USER ); 
-
+    ingestao_usuario VARCHAR DEFAULT CURRENT_USER 
+); 
     
-COMMENT ON COLUMN bronze.contracts.id IS 'ID do contrato'; 
-COMMENT ON COLUMN bronze.contracts.receita_despesa IS 'Tipo de contrato (Receita ou Despesa).'; 
-COMMENT ON COLUMN bronze.contracts.numero IS 'Numero do contrato/empenho.'; 
-COMMENT ON COLUMN bronze.contracts.orgao_codigo IS 'Código do órgão contratante.'; 
-COMMENT ON COLUMN bronze.contracts.orgao_nome IS 'Nome do órgão contratante.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_codigo IS 'Código da unidade contratante atual.'; 
-COMMENT ON COLUMN bronze.contracts.esfera IS 'Esfera política da unidade (Federal, Estadual ou Municipal).'; 
-COMMENT ON COLUMN bronze.contracts.poder IS 'Poder político da unidade (Legislativo, Executivo ou Judiciário).'; 
-COMMENT ON COLUMN bronze.contracts.sisg IS 'Indicada se a unidade faz parte do sistema SISG (Sim ou Não).'; 
-COMMENT ON COLUMN bronze.contracts.gestao IS 'Identificador da gestão orçamentária da unidade.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_nome_resumido IS 'Nome abreviado da unidade contratante atual.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_nome IS 'Nome da unidade contratante atual.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_origem_codigo IS 'Código da unidade contratante de origem.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_origem_nome IS 'Nome da unidade contratante de origem.'; 
-COMMENT ON COLUMN bronze.contracts.fornecedor_tipo IS 'Tipo de fornecedor (FISICA, JURIDICA, IDGENERICO, UG).'; 
-COMMENT ON COLUMN bronze.contracts.fornecedor_cnpj_cpf_idgener IS 'Identificador do fornecedor.'; 
-COMMENT ON COLUMN bronze.contracts.fornecedor_nome IS 'Razão social ou nome do identificador.'; 
-COMMENT ON COLUMN bronze.contracts.codigo_tipo IS 'Tipo do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.tipo IS 'Descrição do tipo de contrato.'; 
-COMMENT ON COLUMN bronze.contracts.categoria IS 'Categoria do objeto do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.processo IS 'Número do processo administrativo da contratação.'; 
-COMMENT ON COLUMN bronze.contracts.objeto IS 'Descrição do objeto contratado.'; 
-COMMENT ON COLUMN bronze.contracts.fundamento_legal IS 'Fundamento legal da contratação.'; 
-COMMENT ON COLUMN bronze.contracts.informacao_complementar IS 'Informação complementar da contratação.'; 
-COMMENT ON COLUMN bronze.contracts.codigo_modalidade IS 'Código da modalidade da licitação.'; 
-COMMENT ON COLUMN bronze.contracts.modalidade IS 'Descrição da modalidade da licitação.'; 
-COMMENT ON COLUMN bronze.contracts.unidade_compra IS 'Código da unidade de compra.'; 
-COMMENT ON COLUMN bronze.contracts.licitacao_numero IS 'Identificador da licitação.'; 
-COMMENT ON COLUMN bronze.contracts.data_assinatura IS 'Data de assinatura do contrato no formato AAAA-MM-DD.'; 
-COMMENT ON COLUMN bronze.contracts.data_publicacao IS 'Data de publicação do contrato no formato AAAA-MM-DD.'; 
-COMMENT ON COLUMN bronze.contracts.vigencia_inicio IS 'Data de início de vigência do contrato no formato AAAA-MM-DD.'; 
-COMMENT ON COLUMN bronze.contracts.vigencia_fim IS 'Data de término de vigência do contrato no formato AAAA-MM-DD.'; 
-COMMENT ON COLUMN bronze.contracts.valor_inicial IS 'Valor inicial do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.valor_global IS 'Valor global do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.num_parcelas IS 'Número de parcelas do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.valor_parcela IS 'Valor de cada parcela do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.valor_acumulado IS 'Valor acumulado do contrato consideradas todas as alterações realizadas na vigência do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.situacao IS 'Status do contrato.'; 
-COMMENT ON COLUMN bronze.contracts.raw_line IS 'Linha completa do CSV original para realização de auditoria.'; 
-COMMENT ON COLUMN bronze.contracts.ingestao_data IS 'Data e hora em que a linha foi carregada no banco de dados.'; 
-COMMENT ON COLUMN bronze.contracts.ingestao_origem IS 'Fonte do dado (nome do arquivo CSV).'; 
-COMMENT ON COLUMN bronze.contracts.ingestao_usuario IS 'Usuário que realizou a ingestão dos dados.'; 
+COMMENT ON COLUMN bronze.contratos.id IS 'ID do contrato'; 
+COMMENT ON COLUMN bronze.contratos.receita_despesa IS 'Tipo de contrato (Receita ou Despesa).'; 
+COMMENT ON COLUMN bronze.contratos.numero IS 'Numero do contrato/empenho.'; 
+COMMENT ON COLUMN bronze.contratos.orgao_codigo IS 'Código do órgão contratante.'; 
+COMMENT ON COLUMN bronze.contratos.orgao_nome IS 'Nome do órgão contratante.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_codigo IS 'Código da unidade contratante atual.'; 
+COMMENT ON COLUMN bronze.contratos.esfera IS 'Esfera política da unidade (Federal, Estadual ou Municipal).'; 
+COMMENT ON COLUMN bronze.contratos.poder IS 'Poder político da unidade (Legislativo, Executivo ou Judiciário).'; 
+COMMENT ON COLUMN bronze.contratos.sisg IS 'Indicada se a unidade faz parte do sistema SISG (Sim ou Não).'; 
+COMMENT ON COLUMN bronze.contratos.gestao IS 'Identificador da gestão orçamentária da unidade.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_nome_resumido IS 'Nome abreviado da unidade contratante atual.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_nome IS 'Nome da unidade contratante atual.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_origem_codigo IS 'Código da unidade contratante de origem.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_origem_nome IS 'Nome da unidade contratante de origem.'; 
+COMMENT ON COLUMN bronze.contratos.fornecedor_tipo IS 'Tipo de fornecedor (FISICA, JURIDICA, IDGENERICO, UG).'; 
+COMMENT ON COLUMN bronze.contratos.fornecedor_cnpj_cpf_idgener IS 'Identificador do fornecedor.'; 
+COMMENT ON COLUMN bronze.contratos.fornecedor_nome IS 'Razão social ou nome do identificador.'; 
+COMMENT ON COLUMN bronze.contratos.codigo_tipo IS 'Tipo do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.tipo IS 'Descrição do tipo de contrato.'; 
+COMMENT ON COLUMN bronze.contratos.categoria IS 'Categoria do objeto do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.processo IS 'Número do processo administrativo da contratação.';
+COMMENT ON COLUMN bronze.contratos.objeto IS 'Descrição do objeto contratado.'; 
+COMMENT ON COLUMN bronze.contratos.fundamento_legal IS 'Fundamento legal da contratação.'; 
+COMMENT ON COLUMN bronze.contratos.informacao_complementar IS 'Informação complementar da contratação.'; 
+COMMENT ON COLUMN bronze.contratos.codigo_modalidade IS 'Código da modalidade da licitação.'; 
+COMMENT ON COLUMN bronze.contratos.modalidade IS 'Descrição da modalidade da licitação.'; 
+COMMENT ON COLUMN bronze.contratos.unidade_compra IS 'Código da unidade de compra.'; 
+COMMENT ON COLUMN bronze.contratos.licitacao_numero IS 'Identificador da licitação.'; 
+COMMENT ON COLUMN bronze.contratos.data_assinatura IS 'Data de assinatura do contrato no formato AAAA-MM-DD.'; 
+COMMENT ON COLUMN bronze.contratos.data_publicacao IS 'Data de publicação do contrato no formato AAAA-MM-DD.'; 
+COMMENT ON COLUMN bronze.contratos.vigencia_inicio IS 'Data de início de vigência do contrato no formato AAAA-MM-DD.'; 
+COMMENT ON COLUMN bronze.contratos.vigencia_fim IS 'Data de término de vigência do contrato no formato AAAA-MM-DD.'; 
+COMMENT ON COLUMN bronze.contratos.valor_inicial IS 'Valor inicial do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.valor_global IS 'Valor global do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.num_parcelas IS 'Número de parcelas do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.valor_parcela IS 'Valor de cada parcela do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.valor_acumulado IS 'Valor acumulado do contrato consideradas todas as alterações realizadas na vigência do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.situacao IS 'Status do contrato.'; 
+COMMENT ON COLUMN bronze.contratos.raw_line IS 'Linha completa do CSV original para realização de auditoria.'; 
+COMMENT ON COLUMN bronze.contratos.ingestao_data IS 'Data e hora em que a linha foi carregada no banco de dados.'; 
+COMMENT ON COLUMN bronze.contratos.ingestao_origem IS 'Fonte do dado (nome do arquivo CSV).'; 
+COMMENT ON COLUMN bronze.contratos.ingestao_usuario IS 'Usuário que realizou a ingestão dos dados.'; 
 
-COPY bronze.contracts( 
+COPY bronze.contratos ( 
     id, 
     receita_despesa, 
     numero, 
@@ -132,13 +132,13 @@ COPY bronze.contracts(
 )
 FROM '/datasets/raw/comprasnet-contratos-anual-contratos-latest.csv' 
 WITH ( 
-    FORMAT CSV, 
-    HEADER TRUE, 
-    DELIMITER ',', 
-    ENCODING 'LATIN1' 
+    FORMAT CSV,
+    HEADER TRUE,
+    DELIMITER ',',
+    ENCODING 'UTF-8' 
 );
 
-UPDATE bronze.contracts
+UPDATE bronze.contratos
 SET raw_line = CONCAT_WS(';',
     id,
     receita_despesa,
