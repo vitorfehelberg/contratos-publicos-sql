@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS bronze.contratos (
     ingestao_usuario VARCHAR DEFAULT CURRENT_USER 
 ); 
     
-COMMENT ON COLUMN bronze.contratos.id IS 'ID do contrato'; 
+COMMENT ON COLUMN bronze.contratos.id IS 'ID do contrato.'; 
 COMMENT ON COLUMN bronze.contratos.receita_despesa IS 'Tipo de contrato (Receita ou Despesa).'; 
 COMMENT ON COLUMN bronze.contratos.numero IS 'Numero do contrato/empenho.'; 
 COMMENT ON COLUMN bronze.contratos.orgao_codigo IS 'Código do órgão contratante.'; 
